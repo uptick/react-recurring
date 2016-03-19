@@ -2,20 +2,20 @@ var webpack = require( 'webpack' );
 var ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 var config = require( './webpack.config.base' );
 
-config.output.filename = 'index.min.js';
+config.output.filename = 'index.js';
 
-// Extract CSS modules.
-config.module.loaders[1] = {
-    test: /.css$/,
-    loader: ExtractTextPlugin.extract( 'style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]' )
-};
+// // Extract CSS modules.
+// config.module.loaders[1] = {
+//     test: /.css$/,
+//     loader: ExtractTextPlugin.extract( 'style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]' )
+// };
 
 config.plugins = [
 
-    // Extract CSS modules.
-    new ExtractTextPlugin( 'main.min.css', {
-        allChunks: true
-    }),
+    // // Extract CSS modules.
+    // new ExtractTextPlugin( 'react-recurring.min.css', {
+    //     allChunks: true
+    // }),
 
     // removes a lot of debugging code in React
     new webpack.DefinePlugin({

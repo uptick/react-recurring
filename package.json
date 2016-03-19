@@ -1,7 +1,7 @@
 {
   "name": "react-recurring",
   "version": "0.0.1",
-  "description": "",
+  "description": "A recurring date selection widget for React.",
   "main": "lib/index.js",
   "scripts": {
     "build_prod": "webpack --config webpack.config.production.js --progress --colors",
