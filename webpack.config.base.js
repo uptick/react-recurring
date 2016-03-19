@@ -3,22 +3,17 @@ var webpack = require( 'webpack' );
 
 module.exports = {
     context: __dirname,
-    entry: [
-        'webpack-dev-server/client?http://localhost:3000',
-        'webpack/hot/only-dev-server',
-        './example/index'
-    ],
+    entry: './src/index',
     output: {
-        path: path.resolve( './example/' ),
-        publicPath: 'http://localhost:3000/example/',
-        filename: 'bundle.js'
+        path: path.resolve( './lib/' ),
+        filename: 'index.js'
     },
     module: {
         loaders: [
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loaders: [ 'react-hot', 'babel' ]
+                loaders: [ 'babel' ]
             },
             {
                 test: /.css$/,
@@ -29,10 +24,6 @@ module.exports = {
             }
         ]
     },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
-    ],
     resolve: {
         modulesDirectories: [ 'node_modules' ],
         extensions: [ '', '.js', '.jsx' ]
