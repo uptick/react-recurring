@@ -1,0 +1,12 @@
+.pre-label {
+    display: inline-block;
+    width: 135px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.post-label {
+    display: inline-block;
+    width: 40px;
+    margin-left: 10px;
+}

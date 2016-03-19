@@ -1,0 +1,15 @@
+.yearly-input {
+}
+
+.day-of-year-input {
+    display: inline-block;
+    width: 100px;
+}
+
+.pre-label {
+    composes: pre-label from "./labels.css";
+}
+
+.post-label {
+    composes: post-label from "./labels.css";
+}

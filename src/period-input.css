@@ -1,0 +1,18 @@
+@import './labels.css';
+
+.period-container {
+    width: 301px;
+}
+
+.period-input {
+    display: inline-block;
+    width: 100px;
+}
+
+.pre-label {
+    composes: pre-label from "./labels.css";
+}
+
+.post-label {
+    composes: post-label from "./labels.css";
+}

@@ -1,0 +1,29 @@
+.monthly-input {
+    width: 301px;
+}
+
+.dom-pre-label {
+    composes: pre-label from "./labels.css";
+}
+
+.pre-label {
+    display: inline-block;
+    margin-right: 10px;
+    width: 119px;
+    text-align: right;
+}
+
+.ordinal {
+    display: inline-block;
+}
+
+.day-of-month-input {
+    display: inline-block;
+    width: 100px;
+}
+
+.last-day-of-month-input {
+    display: inline-block;
+    height: 15px;
+    width: 100p;
+}

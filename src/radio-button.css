@@ -1,0 +1,119 @@
+.base {
+    display: inline-block;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+
+    font-size: 18px;
+    font-family: arial;
+
+    text-align: center;
+    vertical-align: middle;
+}
+
+.normal {
+    composes: base;
+
+    border-color: #ddd;
+    color: #aaa;
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
+    cursor: pointer;
+}
+
+.normal:hover {
+    /* base */
+    display: inline-block;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+
+    /* base */
+    font-size: 20px;
+    font-family: arial;
+    text-align: center;
+    vertical-align: middle;
+
+    border-color: #ddd;
+    background-color: #ddd;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
+    cursor: pointer;
+}
+
+.checked {
+    composes: base;
+
+    border-color: #6184db;
+    background-color: #6184db;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
+}
+
+.normal:not(:first-child), .checked:not(:first-child) {
+    margin-left: 3px;
+}
+
+.base-wide {
+    display: inline-block;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+
+    font-size: 18px;
+    font-family: arial;
+
+    text-align: center;
+    vertical-align: middle;
+}
+
+.normal-wide {
+    composes: base-wide;
+
+    border-color: #ddd;
+    color: #aaa;
+    height: 40px;
+    line-height: 36px;
+    cursor: pointer;
+}
+
+.normal-wide:hover {
+    /* base */
+    display: inline-block;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+
+    /* base */
+    font-size: 18px;
+    font-family: arial;
+    text-align: center;
+    vertical-align: middle;
+
+    border-color: #ddd;
+    background-color: #ddd;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
+    cursor: pointer;
+}
+
+.checked-wide {
+    composes: base-wide;
+
+    border-color: #6184db;
+    background-color: #6184db;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
+}
+
+.text {
+}

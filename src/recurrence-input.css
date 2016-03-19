@@ -1,0 +1,13 @@
+.recurrence-input {
+}
+
+.rule {
+    width: 301px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    vertical-align: middle;
+    border-color: #ddd;
+    border-style: solid none none none;
+    border-width: 1px;
+}
