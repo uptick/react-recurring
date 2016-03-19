@@ -100,7 +100,7 @@ class RecurrenceInput extends Component {
     }
 
     getValue() {
-        return '';
+        return this.rule.toString();
     }
 
     sendChange() {
