@@ -1,0 +1,14 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "example",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js --progress --colors"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react-recurring": "0.0.1"
+  }
+}

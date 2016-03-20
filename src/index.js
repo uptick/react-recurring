@@ -1,1 +1,2 @@
-export RecurrenceInput from './recurrence-input'
+import RecurrenceInput from './recurrence-input'
+export default RecurrenceInput;
