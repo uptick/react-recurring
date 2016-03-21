@@ -1,14 +1,14 @@
 {
   "name": "react-recurring",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A recurring date selection widget for React.",
   "main": "lib/index.js",
   "scripts": {
-    "build_prod": "webpack --config webpack.config.production.js --progress --colors",
+    "build:prod": "webpack --config webpack.config.production.js --progress --colors",
     "build": "webpack --config webpack.config.base.js --progress --colors",
     "watch": "node server.js",
     "test": "mocha --require mock-css-modules --harmony-proxies --compilers js:babel-register -R nyan",
-    "prepublish": "npm run build_prod"
+    "prepublish": "npm run build:prod"
   },
   "author": "Luke Hodkinson",
   "license": "ISC",

@@ -1,1 +1,6 @@
 src/
+example/
+dev/
+server.js
+test/
+webpack.config.*

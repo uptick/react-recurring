@@ -13,6 +13,7 @@
     "react-dom": "^0.14.7"
   },
   "devDependencies": {
+    "react-recurring": "0.0.2",
     "webpack": "^1.12.14"
   }
 }
