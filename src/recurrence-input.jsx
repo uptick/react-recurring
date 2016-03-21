@@ -19,10 +19,6 @@ class RecurrenceInput extends Component {
         this.updateRule = this.updateRule.bind( this );
         this.handleChange = this.handleChange.bind( this );
         this.handleFrequencyChange = this.handleFrequencyChange.bind( this );
-        this.handleDailyChange = this.handleDailyChange.bind( this );
-        this.handleWeeklyChange = this.handleWeeklyChange.bind( this );
-        this.handleMonthlyChange = this.handleMonthlyChange.bind( this );
-        this.handleYearlyChange = this.handleYearlyChange.bind( this );
     }
 
     updateRule( state = {} ) {
@@ -112,6 +108,7 @@ class RecurrenceInput extends Component {
     handleChange( event, value ) {
         value.rule = this.updateRule( value );
         this.setState( value );
+        this.sendChange();
     }
 
     handleFrequencyChange( event, value ) {
@@ -125,31 +122,6 @@ class RecurrenceInput extends Component {
             dom: 1,
             doy: 1
         } );
-    }
-
-    handleDailyChange( event ) {
-        event.preventDefault();
-        this.sendChange();
-    }
-
-    handleWeeklyChange( event, value ) {
-        event.preventDefault();
-        this.setState({ weekday: value });
-        this.sendChange();
-    }
-
-    handleMonthlyChange( event ) {
-        event.preventDefault();
-        this.sendChange();
-    }
-
-    handleYearlyChange( event ) {
-        event.preventDefault();
-        this.sendChange();
-    }
-
-    handlePeriodChange( event, value ) {
-        this.setState({ period: value });
     }
 
     render() {
