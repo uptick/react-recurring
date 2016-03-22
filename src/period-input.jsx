@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CSSModules from 'react-css-modules'
+import classNames from 'classnames'
 import styles from './period-input.css'
 
 class PeriodInput extends Component {
@@ -14,14 +14,14 @@ class PeriodInput extends Component {
     render() {
         const { onChange, period, plural } = this.props;
         return (
-            <div styleName="period-container">
+            <div className={ styles.periodContainer }>
               <div className="form-group">
-                <div styleName="pre-label">
+                <div className={ styles.preLabel }>
                   <span>Repeat every </span>
                 </div>
-                <input styleName="period-input" className="form-control" type="number" min="1" name="period"
+                <input className={ classNames( 'form-control', styles.periodInput ) } type="number" min="1" name="period"
                        value={ period } onChange={ ::this.handleChange } />
-                <div styleName="post-label">
+                <div className={ styles.postLabel }>
                   <span> { plural }</span>
                 </div>
               </div>
@@ -30,4 +30,4 @@ class PeriodInput extends Component {
     }
 }
 
-export default CSSModules( PeriodInput, styles );
+export default PeriodInput;

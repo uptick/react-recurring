@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CSSModules from 'react-css-modules'
+import classNames from 'classnames'
 import styles from './tabs.css'
 
 class Tabs extends Component {
@@ -7,7 +7,7 @@ class Tabs extends Component {
     render() {
         const { onChange, selected, tabs } = this.props;
         return (
-            <ul styleName="tabs" className="nav nav-tabs">
+            <ul className={ classNames( 'nav nav-tabs', styles.tabs ) }>
               { tabs.map( ( item, ii ) => (
                     <li className={ (selected == item[0]) ? 'active' : '' } role="presentation" key={ ii }
                         onClick={ e => onChange( e, item[0] ) }>
@@ -19,4 +19,4 @@ class Tabs extends Component {
     }
 }
 
-export default CSSModules( Tabs, styles );
+export default Tabs;

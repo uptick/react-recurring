@@ -1,12 +1,12 @@
-.monthly-input {
+.monthlyInput {
     width: 301px;
 }
 
-.dom-pre-label {
+.domPreLabel {
     composes: pre-label from "./labels.css";
 }
 
-.pre-label {
+.preLabel {
     display: inline-block;
     margin-right: 10px;
     width: 119px;
@@ -17,12 +17,12 @@
     display: inline-block;
 }
 
-.day-of-month-input {
+.dayOfMonthInput {
     display: inline-block;
     width: 100px;
 }
 
-.last-day-of-month-input {
+.lastDayOfMonthInput {
     display: inline-block;
     height: 15px;
     width: 100p;

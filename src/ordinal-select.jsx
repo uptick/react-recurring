@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import CSSModules from 'react-css-modules'
 import RadioButton from './radio-button'
-import styles from './ordinal-select.css'
 
 class OrdinalSelect extends Component {
 
@@ -25,7 +23,7 @@ class OrdinalSelect extends Component {
     render() {
         const { selected } = this.props;
         return (
-            <div styleName="ordinal-select">
+            <div>
               { this.CHOICES.map( ( item, ii ) => (
                     <RadioButton label={ item[1] } value={ item[0] } key={ ii } checked={ selected == item[0] }
                                  onChange={ this.handleChange } />
@@ -35,4 +33,4 @@ class OrdinalSelect extends Component {
     }
 }
 
-export default CSSModules( OrdinalSelect, styles );
+export default OrdinalSelect;

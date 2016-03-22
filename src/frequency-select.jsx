@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import CSSModules from 'react-css-modules'
 import RRule from 'rrule';
 import Tabs from './tabs'
 import styles from './frequency-select.css'
@@ -19,11 +18,11 @@ class FrequencySelect extends Component {
     render() {
         const { onChange, selected } = this.props;
         return (
-            <div styleName="frequency-select">
+            <div className={ styles.frequencySelect }>
               <Tabs tabs={ this.CHOICES } selected={ selected } onChange={ onChange } />
             </div>
         );
     }
 }
 
-export default CSSModules( FrequencySelect, styles );
+export default FrequencySelect;

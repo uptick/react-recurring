@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CSSModules from 'react-css-modules'
+import classNames from 'classnames'
 import OrdinalSelect from './ordinal-select'
 import WeekdaySelect from './weekday-select'
 import PeriodInput from './period-input'
@@ -38,18 +38,18 @@ class MonthlyInput extends Component {
             mainCom = (
                 <div>
                   <div className="form-group">
-                    <div styleName="dom-pre-label">
+                    <div className={ styles.domPreLabel }>
                       <span>Day of month</span>
                     </div>
-                    <input styleName="day-of-month-input" className="form-control" value={ dom }
+                    <input className={ classNames( 'form-control', styles.dayOfMonthInput ) } value={ dom }
                            type="number" min="1" max="28" name="day-of-month" onChange={ ::this.handleDOMChange } />
                   </div>
                   <div className="form-group">
-                    <div styleName="dom-pre-label">
+                    <div className={ styles.domPreLabel }>
                       <span>From the last day</span>
                     </div>
                     <label>
-                      <input styleName="last-day-of-month-input" value={ lastDom } checked={ lastDom }
+                      <input className={ styles.lastDayOfMonthInput } value={ lastDom } checked={ lastDom }
                              type="checkbox" name="last-day-of-month" onChange={ ::this.handleLastDOMChange } />
                     </label>
                   </div>
@@ -61,21 +61,21 @@ class MonthlyInput extends Component {
             mainCom = (
                 <div>
                   <div className="form-group">
-                    <div styleName="pre-label">
+                    <div className={ styles.preLabel }>
                       <span>On the </span>
                     </div>
-                    <div styleName="ordinal">
+                    <div className={ styles.ordinal }>
                       <OrdinalSelect onChange={ onChange } selected={ ordinal } />
                     </div>
                   </div>
                   <WeekdaySelect onChange={ onChange } selected={ weekday } />
-                  <PeriodInput { ...this.props } styles={ null } plural="months." />
+                  <PeriodInput { ...this.props } plural="months." />
                 </div>
             );
         }
 
         return (
-            <div styleName="monthly-input">
+            <div className={ styles.monthlyInput }>
               <div className="form-group">
                 <RadioButton wide={ true } label="By day of month" value="M"
                              checked={ mode == 'M' } onChange={ ::this.handleModeChange }
@@ -90,4 +90,4 @@ class MonthlyInput extends Component {
     }
 }
 
-export default CSSModules( MonthlyInput, styles );
+export default MonthlyInput;

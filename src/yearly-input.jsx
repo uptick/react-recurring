@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CSSModules from 'react-css-modules'
+import classNames from 'classnames'
 import PeriodInput from './period-input'
 import styles from './yearly-input.css'
 
@@ -21,21 +21,21 @@ class YearlyInput extends Component {
     render() {
         const { onChange, doy, period } = this.props;
         return (
-            <div styleName="yearly-input">
+            <div className={ styles.yearlyInput }>
               <div className="form-group">
-                <div styleName="pre-label">
+                <div className={ styles.preLabel }>
                   <span>Day of year</span>
                 </div>
-                <input styleName="day-of-year-input" className="form-control"
+                <input className={ classNames( 'form-control', styles.dayOfYearInput ) }
                        type="number" min="1" max="365" name="day-of-year" value={ doy }
                        onChange={ ::this.handleDOYChange } />
               </div>
               <div>
-                <PeriodInput { ...this.props } styles={ null } plural="years." />
+                <PeriodInput { ...this.props } plural="years." />
               </div>
             </div>
         );
     }
 }
 
-export default CSSModules( YearlyInput, styles );
+export default YearlyInput;

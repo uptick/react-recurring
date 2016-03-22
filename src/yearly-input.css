@@ -1,15 +1,15 @@
-.yearly-input {
+.yearlyInput {
 }
 
-.day-of-year-input {
+.dayOfYearInput {
     display: inline-block;
     width: 100px;
 }
 
-.pre-label {
+.preLabel {
     composes: pre-label from "./labels.css";
 }
 
-.post-label {
+.postLabel {
     composes: post-label from "./labels.css";
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CSSModules from 'react-css-modules';
 import styles from './radio-button.css';
 
 class RadioButton extends Component {
@@ -16,11 +15,11 @@ class RadioButton extends Component {
             ctrStyle += '-wide';
 
         return (
-            <div styleName={ ctrStyle } onClick={ e => onClick( e, value ) } { ...props }>
-              <span styleName="text">{ label }</span>
+            <div className={ styles[ctrStyle] } onClick={ e => onClick( e, value ) } { ...props }>
+              <span className={ styles.text }>{ label }</span>
             </div>
         );
     }
 }
 
-export default CSSModules( RadioButton, styles );
+export default RadioButton;

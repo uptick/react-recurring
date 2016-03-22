@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import CSSModules from 'react-css-modules'
 import RRule from 'rrule';
 import FrequencySelect from './frequency-select'
 import DailyInput from './daily-input'
@@ -163,10 +162,10 @@ class RecurrenceInput extends Component {
 
         let ruleCom;
         if( rule )
-            ruleCom = <div styleName="rule"><span>{ rule.toText() }</span></div>;
+            ruleCom = <div className={ styles.rule }><span>{ rule.toText() }</span></div>;
 
         return (
-            <div styleName="recurrence-input">
+            <div className={ styles.recurrenceInput }>
               <FrequencySelect onChange={ this.handleFrequencyChange } selected={ frequency } />
               { periodCom }
               { ruleCom }
@@ -176,4 +175,4 @@ class RecurrenceInput extends Component {
     }
 }
 
-export default CSSModules( RecurrenceInput, styles );
+export default RecurrenceInput;

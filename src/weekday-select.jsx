@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import RRule from 'rrule'
-import CSSModules from 'react-css-modules'
 import RadioButton from './radio-button'
 import styles from './weekday-select.css'
 
@@ -29,7 +28,7 @@ class WeekdaySelect extends Component {
     render() {
         const { selected } = this.props;
         return (
-            <div styleName="weekday-select">
+            <div className={ styles.weekdaySelect }>
               <div className="form-group">
                 { this.CHOICES.map( ( item, ii ) => (
                       <RadioButton label={ item[1] } value={ item[0] } key={ ii }
@@ -41,4 +40,4 @@ class WeekdaySelect extends Component {
     }
 }
 
-export default CSSModules( WeekdaySelect, styles );
+export default WeekdaySelect;
