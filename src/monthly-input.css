@@ -27,3 +27,7 @@
     height: 15px;
     width: 100p;
 }
+
+.row {
+    composes: row from "./row.css";
+}

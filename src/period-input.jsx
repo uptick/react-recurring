@@ -15,7 +15,7 @@ class PeriodInput extends Component {
         const { onChange, period, plural } = this.props;
         return (
             <div className={ styles.periodContainer }>
-              <div className="form-group">
+              <div className={ styles.row }>
                 <div className={ styles.preLabel }>
                   <span>Repeat every </span>
                 </div>

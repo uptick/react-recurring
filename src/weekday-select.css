@@ -1,2 +1,6 @@
 .weekday-select {
 }
+
+.row {
+    composes: row from "./row.css";
+}

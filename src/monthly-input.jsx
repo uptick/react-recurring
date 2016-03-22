@@ -37,14 +37,14 @@ class MonthlyInput extends Component {
         if( mode == 'M' ) {
             mainCom = (
                 <div>
-                  <div className="form-group">
+                  <div className={ styles.row }>
                     <div className={ styles.domPreLabel }>
                       <span>Day of month</span>
                     </div>
                     <input className={ classNames( 'form-control', styles.dayOfMonthInput ) } value={ dom }
                            type="number" min="1" max="28" name="day-of-month" onChange={ ::this.handleDOMChange } />
                   </div>
-                  <div className="form-group">
+                  <div className={ styles.row }>
                     <div className={ styles.domPreLabel }>
                       <span>From the last day</span>
                     </div>
@@ -53,14 +53,14 @@ class MonthlyInput extends Component {
                              type="checkbox" name="last-day-of-month" onChange={ ::this.handleLastDOMChange } />
                     </label>
                   </div>
-                  <PeriodInput { ...this.props } styles={ null } plural="months." />
+                  <PeriodInput { ...this.props } plural="months." />
                 </div>
             );
         }
         else if( mode == 'W' ) {
             mainCom = (
                 <div>
-                  <div className="form-group">
+                  <div className={ styles.row }>
                     <div className={ styles.preLabel }>
                       <span>On the </span>
                     </div>
@@ -76,7 +76,7 @@ class MonthlyInput extends Component {
 
         return (
             <div className={ styles.monthlyInput }>
-              <div className="form-group">
+              <div className={ styles.row }>
                 <RadioButton wide={ true } label="By day of month" value="M"
                              checked={ mode == 'M' } onChange={ ::this.handleModeChange }
                              style={{ width: '145px', marginRight: '10px', fontSize: '16px' }} />

@@ -22,7 +22,7 @@ class YearlyInput extends Component {
         const { onChange, doy, period } = this.props;
         return (
             <div className={ styles.yearlyInput }>
-              <div className="form-group">
+              <div className={ styles.row }>
                 <div className={ styles.preLabel }>
                   <span>Day of year</span>
                 </div>
@@ -30,9 +30,7 @@ class YearlyInput extends Component {
                        type="number" min="1" max="365" name="day-of-year" value={ doy }
                        onChange={ ::this.handleDOYChange } />
               </div>
-              <div>
-                <PeriodInput { ...this.props } plural="years." />
-              </div>
+              <PeriodInput { ...this.props } plural="years." />
             </div>
         );
     }

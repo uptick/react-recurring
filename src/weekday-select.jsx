@@ -29,7 +29,7 @@ class WeekdaySelect extends Component {
         const { selected } = this.props;
         return (
             <div className={ styles.weekdaySelect }>
-              <div className="form-group">
+              <div className={ styles.row }>
                 { this.CHOICES.map( ( item, ii ) => (
                       <RadioButton label={ item[1] } value={ item[0] } key={ ii }
                                    checked={ selected == item[0] } onChange={ this.handleChange } />

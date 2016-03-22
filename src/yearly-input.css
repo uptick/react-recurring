@@ -13,3 +13,7 @@
 .postLabel {
     composes: post-label from "./labels.css";
 }
+
+.row {
+    composes: row from "./row.css";
+}
