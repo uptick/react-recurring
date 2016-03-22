@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import CSSModules from 'react-css-modules'
-var RRule = require( 'rrule' );
+import RRule from 'rrule';
 import FrequencySelect from './frequency-select'
 import DailyInput from './daily-input'
 import WeeklyInput from './weekly-input'
@@ -19,67 +19,27 @@ class RecurrenceInput extends Component {
         this.updateRule = this.updateRule.bind( this );
         this.handleChange = this.handleChange.bind( this );
         this.handleFrequencyChange = this.handleFrequencyChange.bind( this );
+        this.getValue = this.getValue.bind( this );
+        this.setValue = this.setValue.bind( this );
+    }
+
+    componentDidMount() {
+        const { value } = this.props || {};
+        this.setValue( value );
     }
 
     updateRule( state = {} ) {
         const { frequency, weekday, period, lastDom, dom, doy, mode, ordinal } = { ...(this.state || {}), ...state };
 
-        let freq;
-        switch( frequency ) {
-            case 'Daily':
-                freq = RRule.DAILY;
-                break;
-            case 'Weekly':
-                freq = RRule.WEEKLY;
-                break;
-            case 'Monthly':
-                freq = RRule.MONTHLY;
-                break;
-            case 'Yearly':
-                freq = RRule.YEARLY;
-                break;
-        }
-
-        let byweekday;
-        switch( weekday ) {
-            case 'Mo':
-                byweekday = RRule.MO;
-                break;
-            case 'Tu':
-                byweekday = RRule.TU;
-                break;
-            case 'We':
-                byweekday = RRule.WE;
-                break;
-            case 'Th':
-                byweekday = RRule.TH;
-                break;
-            case 'Fr':
-                byweekday = RRule.FR;
-                break;
-            case 'Sa':
-                byweekday = RRule.SA;
-                break;
-            case 'Su':
-                byweekday = RRule.SU;
-                break;
-        }
-
-        let ord = {
-            '1st': 1,
-            '2nd': 2,
-            '3rd': 3,
-            '4th': 4
-        }[ordinal];
-
-        if( byweekday !== undefined && freq == RRule.MONTHLY && mode == 'W' && ord !== undefined )
-            byweekday = byweekday.nth( ord );
+        let byweekday = weekday;
+        if( byweekday !== undefined && frequency == RRule.MONTHLY && mode == 'W' && ordinal !== undefined )
+            byweekday = byweekday.nth( ordinal );
 
         let opts = {
-            freq: freq,
+            freq: frequency,
             interval: period
         };
-        if( byweekday !== undefined && (ord !== undefined || freq == RRule.WEEKLY) )
+        if( byweekday !== undefined && (ordinal !== undefined || frequency == RRule.WEEKLY) )
             opts.byweekday = byweekday;
         if( dom !== undefined && mode == 'M' ) {
             if( lastDom )
@@ -87,7 +47,7 @@ class RecurrenceInput extends Component {
             else
                 opts.bymonthday = dom;
         }
-        if( doy !== undefined && freq == RRule.YEARLY )
+        if( doy !== undefined && frequency == RRule.YEARLY )
             opts.byyearday = doy;
 
         this.rule = new RRule( opts );
@@ -97,6 +57,61 @@ class RecurrenceInput extends Component {
 
     getValue() {
         return this.rule.toString();
+    }
+
+    setValue( value ) {
+        if( value ) {
+            this.rule = RRule.fromString( value );
+            let opts = this.rule.options;
+            let mode, weekday, ordinal, dom, lastDom;
+            const weekdayMap = [
+                RRule.MO,
+                RRule.TU,
+                RRule.WE,
+                RRule.TH,
+                RRule.FR,
+                RRule.SA,
+                RRule.SU,
+            ];
+            if( opts.byweekday !== null && opts.byweekday !== undefined && opts.byweekday.length > 0 ) {
+                weekday = weekdayMap[opts.byweekday[0]];
+            }
+            else if( opts.bynweekday !== null && opts.bynweekday !== undefined && opts.bynweekday.length > 0 ) {
+                mode = 'W';
+                [ weekday, ordinal ] = opts.bynweekday[0];
+                weekday = weekdayMap[weekday];
+            }
+            else if( opts.bynmonthday !== null && opts.bynmonthday !== undefined && opts.bynmonthday.length > 0 ) {
+                mode = 'M';
+                dom = opts.bynmonthday[0];
+                if( dom < 0 ) {
+                    dom *= -1;
+                    lastDom = true;
+                }
+                else
+                    lastDom = false;
+            }
+            else if( opts.bymonthday !== null && opts.bymonthday !== undefined && opts.bymonthday.length > 0 ) {
+                mode = 'M';
+                dom = opts.bymonthday[0];
+                if( dom < 0 ) {
+                    dom *= -1;
+                    lastDom = true;
+                }
+                else
+                    lastDom = false;
+            }
+            this.setState({
+                frequency: opts.freq,
+                weekday: weekday,
+                period: opts.interval,
+                dom: dom,
+                lastDom: lastDom,
+                ordinal: ordinal,
+                doy: opts.byyearday,
+                mode: mode
+            });
+        }
     }
 
     sendChange() {
@@ -125,22 +140,23 @@ class RecurrenceInput extends Component {
     }
 
     render() {
+        const { name } = this.props;
         const { frequency, weekday, period, ordinal, mode,
                 lastDom, dom, doy, rule } = this.state || {};
 
         let periodCom;
         switch( frequency ) {
-            case 'Daily':
+            case RRule.DAILY:
                 periodCom = <DailyInput onChange={ this.handleChange } period={ period } />;
                 break;
-            case 'Weekly':
+            case RRule.WEEKLY:
                 periodCom = <WeeklyInput onChange={ this.handleChange } weekday={ weekday } period={ period } />;
                 break;
-            case 'Monthly':
+            case RRule.MONTHLY:
                 periodCom = <MonthlyInput onChange={ this.handleChange } mode={ mode } weekday={ weekday }
                                           lastDom={ lastDom } dom={ dom } ordinal={ ordinal } period={ period } />;
                 break;
-            case 'Yearly':
+            case RRule.YEARLY:
                 periodCom = <YearlyInput onChange={ this.handleChange } doy={ doy } period={ period } />;
                 break;
         };
@@ -154,6 +170,7 @@ class RecurrenceInput extends Component {
               <FrequencySelect onChange={ this.handleFrequencyChange } selected={ frequency } />
               { periodCom }
               { ruleCom }
+              <input type="hidden" name={ name } />
             </div>
         );
     }

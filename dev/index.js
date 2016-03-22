@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import RecurrenceInput from '../src/recurrence-input'
+import RecurrenceInput from '../src'
 
 let elem = document.getElementById( 'mount' );
-ReactDOM.render( <RecurrenceInput />, elem );
+ReactDOM.render( <RecurrenceInput onChange={ v => console.log( v ) } />, elem );
 
 if( module.hot ) {
     module.hot.accept();

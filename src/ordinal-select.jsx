@@ -7,7 +7,12 @@ class OrdinalSelect extends Component {
 
     constructor( props ) {
         super( props );
-        this.CHOICES = [ '1st', '2nd', '3rd', '4th' ];
+        this.CHOICES = [
+            [ 1, '1st' ],
+            [ 2, '2nd' ],
+            [ 3, '3rd' ],
+            [ 4, '4th' ]
+        ];
         this.handleChange = this.handleChange.bind( this );
     }
 
@@ -22,7 +27,7 @@ class OrdinalSelect extends Component {
         return (
             <div styleName="ordinal-select">
               { this.CHOICES.map( ( item, ii ) => (
-                    <RadioButton label={ item } value={ item } key={ ii } checked={ selected == item }
+                    <RadioButton label={ item[1] } value={ item[0] } key={ ii } checked={ selected == item[0] }
                                  onChange={ this.handleChange } />
                 ))}
             </div>

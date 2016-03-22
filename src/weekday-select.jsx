@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import RRule from 'rrule'
 import CSSModules from 'react-css-modules'
 import RadioButton from './radio-button'
 import styles from './weekday-select.css'
@@ -7,7 +8,15 @@ class WeekdaySelect extends Component {
 
     constructor( props ) {
         super( props );
-        this.CHOICES = [ 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su' ];
+        this.CHOICES = [
+            [ RRule.MO, 'Mo' ],
+            [ RRule.TU, 'Tu' ],
+            [ RRule.WE, 'We' ],
+            [ RRule.TH, 'Th' ],
+            [ RRule.FR, 'Fr' ],
+            [ RRule.SA, 'Sa' ],
+            [ RRule.SU, 'Su' ]
+        ];
         this.handleChange = this.handleChange.bind( this );
     }
 
@@ -23,8 +32,8 @@ class WeekdaySelect extends Component {
             <div styleName="weekday-select">
               <div className="form-group">
                 { this.CHOICES.map( ( item, ii ) => (
-                      <RadioButton label={ item } value={ item } key={ ii }
-                                   checked={ selected == item } onChange={ this.handleChange } />
+                      <RadioButton label={ item[1] } value={ item[0] } key={ ii }
+                                   checked={ selected == item[0] } onChange={ this.handleChange } />
                   ))}
               </div>
             </div>

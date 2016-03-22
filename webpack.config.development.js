@@ -6,11 +6,11 @@ var config = require('./webpack.config.base');
 config.entry = [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    './example/index'
+    './dev/index'
 ]
 
 // override django's STATIC_URL for webpack bundles
-config.output.publicPath = 'http://localhost:3000/example/';
+config.output.publicPath = 'http://localhost:3000/dev/';
 
 // Add HotModuleReplacementPlugin and BundleTracker plugins
 config.plugins = [
