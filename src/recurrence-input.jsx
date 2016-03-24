@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import classNames from 'classnames'
 import RRule from 'rrule';
 import FrequencySelect from './frequency-select'
 import DailyInput from './daily-input'
@@ -13,7 +14,9 @@ class RecurrenceInput extends Component {
         super( props );
         this.state = {
             period: 1,
-            dom: 1
+            dom: 1,
+            compact: true,
+            savedValue: props.value
         };
         this.updateRule = this.updateRule.bind( this );
         this.handleChange = this.handleChange.bind( this );
@@ -23,8 +26,31 @@ class RecurrenceInput extends Component {
     }
 
     componentDidMount() {
-        const { value } = this.props || {};
+        let { value } = this.props || {};
         this.setValue( value );
+    }
+
+    handleExpand( event ) {
+        event.preventDefault();
+        if( this.state.compact ) {
+            let { savedValue } = this.state || {};
+            if( !savedValue )
+                savedValue = 'FREQ=DAILY;INTERVAL=1';
+            this.setValue( savedValue );
+            this.setState({ compact: false });
+        }
+    }
+
+    handleSave( event ) {
+        event.preventDefault();
+        if( !this.state.compact )
+            this.setState({ savedValue: this.getValue(), compact: true });
+    }
+
+    handleCancel( event ) {
+        event.preventDefault();
+        if( !this.state.compact )
+            this.setState({ compact: true });
     }
 
     updateRule( state = {} ) {
@@ -55,12 +81,17 @@ class RecurrenceInput extends Component {
     }
 
     getValue() {
-        return this.rule.toString();
+        if( this.rule )
+            return this.rule.toString() + '(' + this.rule.toText() + ')';
+        else
+            return undefined;
     }
 
     setValue( value ) {
         if( value ) {
-            this.rule = RRule.fromString( value );
+            let stripped = value.match( /^([^(]*).*$/m )[1];
+            console.log( stripped );
+            this.rule = RRule.fromString( stripped );
             let opts = this.rule.options;
             let mode, weekday, ordinal, dom, lastDom;
             const weekdayMap = [
@@ -108,7 +139,8 @@ class RecurrenceInput extends Component {
                 lastDom: lastDom,
                 ordinal: ordinal,
                 doy: opts.byyearday,
-                mode: mode
+                mode: mode,
+                rule: this.rule
             });
         }
     }
@@ -139,7 +171,28 @@ class RecurrenceInput extends Component {
     }
 
     render() {
-        const { name } = this.props;
+        let { compact, savedValue } = this.state || {};
+        if( savedValue )
+            savedValue = savedValue.match( /^[^(]*\(([^)]*)\)$/m )[1];
+        if( compact ) {
+            return (
+                <div className={ styles.compact }>
+                  <div className="input-group">
+                    <input type="text" className="form-control" readOnly value={ savedValue } />
+                    <span className={ classNames( 'input-group-addon', styles.button ) }
+                          onClick={ ::this.handleExpand }>
+                      <span className="glyphicon glyphicon-calendar"></span>
+                    </span>
+                  </div>
+                  { this.renderHidden() }
+                </div>
+            );
+        }
+        else
+            return this.renderFull();
+    }
+
+    renderFull() {
         const { frequency, weekday, period, ordinal, mode,
                 lastDom, dom, doy, rule } = this.state || {};
 
@@ -169,9 +222,22 @@ class RecurrenceInput extends Component {
               <FrequencySelect onChange={ this.handleFrequencyChange } selected={ frequency } />
               { periodCom }
               { ruleCom }
-              <input type="hidden" name={ name } />
+              <div className="form-group pull-right">
+                <a className={ styles.cancel } href="#" onClick={ ::this.handleCancel }>Cancel</a>
+                <button type="button" className={ classNames( 'btn btn-default', styles.save ) }
+                        onClick={ ::this.handleSave }>
+                  Save
+                </button>
+              </div>
+              { this.renderHidden() }
             </div>
         );
+    }
+
+    renderHidden() {
+        const { name } = this.props;
+        const { savedValue } = this.state;
+        return <input type="hidden" name={ name } value={ savedValue } />;
     }
 }
 

@@ -19,7 +19,7 @@ class PeriodInput extends Component {
                 <div className={ styles.preLabel }>
                   <span>Repeat every </span>
                 </div>
-                <input className={ classNames( 'form-control', styles.periodInput ) } type="number" min="1" name="period"
+                <input className={ classNames( 'form-control', styles.periodInput ) } type="number" min="1"
                        value={ period } onChange={ ::this.handleChange } />
                 <div className={ styles.postLabel }>
                   <span> { plural }</span>

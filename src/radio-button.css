@@ -47,8 +47,8 @@
 .checked {
     composes: base;
 
-    border-color: #6184db;
-    background-color: #6184db;
+    border-color: #337ab7;
+    background-color: #337ab7;
     color: #fff;
     width: 40px;
     height: 40px;
@@ -107,8 +107,8 @@
 .checked-wide {
     composes: base-wide;
 
-    border-color: #6184db;
-    background-color: #6184db;
+    border-color: #337ab7;
+    background-color: #337ab7;
     color: #fff;
     width: 40px;
     height: 40px;

@@ -42,16 +42,16 @@ class MonthlyInput extends Component {
                       <span>Day of month</span>
                     </div>
                     <input className={ classNames( 'form-control', styles.dayOfMonthInput ) } value={ dom }
-                           type="number" min="1" max="28" name="day-of-month" onChange={ ::this.handleDOMChange } />
+                           type="number" min="1" max="28" onChange={ ::this.handleDOMChange } />
                   </div>
                   <div className={ styles.row }>
                     <div className={ styles.domPreLabel }>
                       <span>From the last day</span>
                     </div>
-                    <label>
+                    <span>
                       <input className={ styles.lastDayOfMonthInput } value={ lastDom } checked={ lastDom }
-                             type="checkbox" name="last-day-of-month" onChange={ ::this.handleLastDOMChange } />
-                    </label>
+                             type="checkbox" onChange={ ::this.handleLastDOMChange } />
+                    </span>
                   </div>
                   <PeriodInput { ...this.props } plural="months." />
                 </div>

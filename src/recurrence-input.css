@@ -1,5 +1,6 @@
 .recurrenceInput {
-    min-height: 312px;
+    width: 301px;
+    min-height: 155px;
 }
 
 .rule {
@@ -9,6 +10,24 @@
     text-align: center;
     vertical-align: middle;
     border-color: #ddd;
-    border-style: solid none none none;
+    border-style: solid none solid none;
     border-width: 1px;
+    margin-bottom: 10px;
+}
+
+.compact {
+    width: 300px;
+}
+
+.button {
+    cursor: pointer;
+}
+
+.cancel {
+    line-height: 30px;
+    margin-right: 40px;
+}
+
+.save {
+    margin-right: 15px;
 }

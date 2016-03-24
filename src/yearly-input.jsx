@@ -27,7 +27,7 @@ class YearlyInput extends Component {
                   <span>Day of year</span>
                 </div>
                 <input className={ classNames( 'form-control', styles.dayOfYearInput ) }
-                       type="number" min="1" max="365" name="day-of-year" value={ doy }
+                       type="number" min="1" max="365" value={ doy }
                        onChange={ ::this.handleDOYChange } />
               </div>
               <PeriodInput { ...this.props } plural="years." />
