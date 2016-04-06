@@ -222,13 +222,14 @@ class RecurrenceInput extends Component {
               <FrequencySelect onChange={ this.handleFrequencyChange } selected={ frequency } />
               { periodCom }
               { ruleCom }
-              <div className="form-group pull-right">
+              <div className="pull-right">
                 <a className={ styles.cancel } href="#" onClick={ ::this.handleCancel }>Cancel</a>
                 <button type="button" className={ classNames( 'btn btn-default', styles.save ) }
                         onClick={ ::this.handleSave }>
                   Save
                 </button>
               </div>
+              <div className="clearfix"></div>
               { this.renderHidden() }
             </div>
         );

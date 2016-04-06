@@ -10,7 +10,8 @@
   "scripts": {
     "build:prod": "webpack --config webpack.config.production.js --progress --colors",
     "build": "webpack --config webpack.config.base.js --progress --colors",
-    "watch": "node server.js",
+    "watch": "webpack --config webpack.config.base.js --progress --colors --watch",
+    "hot": "node server.js",
     "test": "mocha --require mock-css-modules --harmony-proxies --compilers js:babel-register -R nyan",
     "prepublish": "npm run build:prod"
   },
