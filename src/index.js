@@ -1,2 +1,4 @@
 import RecurrenceInput from './recurrence-input'
-export default RecurrenceInput;
+import OffsetInput from './offset-input'
+export default RecurrenceInput
+export { OffsetInput }

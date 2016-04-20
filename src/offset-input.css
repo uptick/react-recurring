@@ -1,0 +1,13 @@
+.count {
+    width: 120px;
+    display: inline-block;
+    margin-right: 5px;
+}
+.period {
+    width: 176px;
+    display: inline-block;
+}
+.mode {
+    width: 301px;
+    margin-top: 5px;
+}

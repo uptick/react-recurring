@@ -41,6 +41,7 @@
   "dependencies": {
     "classnames": "^2.2.3",
     "react": "^0.13.3",
-    "rrule": "git+https://github.com/jkbrzt/rrule.git"
+    "rrule": "git+https://github.com/jkbrzt/rrule.git",
+    "underscore": "^1.8.3"
   }
 }
