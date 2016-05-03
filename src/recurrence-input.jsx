@@ -90,7 +90,6 @@ class RecurrenceInput extends Component {
     setValue( value ) {
         if( value ) {
             let stripped = value.match( /^([^(]*).*$/m )[1];
-            console.log( stripped );
             this.rule = RRule.fromString( stripped );
             let opts = this.rule.options;
             let mode, weekday, ordinal, dom, lastDom;

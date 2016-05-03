@@ -83,7 +83,7 @@ class OffsetInput extends Component {
               <option value={ -ii }>{ this.getOrdinal( ii ) } last</option>
             ))}
         </select>,
-        <span> day</span>
+        <span key="4"> day</span>
       ];
     }
 
