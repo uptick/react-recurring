@@ -1,10 +1,25 @@
 <html>
   <head>
     <link href="./bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="../lib/react-recurring.min.css" rel="stylesheet" media="screen">
+    <link href="./node_modules/react-recurring/lib/react-recurring.min.css" rel="stylesheet" media="screen">
   </head>
   <body>
-    <div id="mount"></div>
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Recurrence</label>
+        <div class="col-sm-10">
+          <div id="mount"></div>
+          <span class="help-block">Help text goes here.</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Offset</label>
+        <div class="col-sm-10">
+          <div id="offset-mount"></div>
+          <span class="help-block">Help text goes here.</span>
+        </div>
+      </div>
+    </form>
     <script src="./jquery.min.js"></script>
     <script src="./bootstrap.min.js"></script>
     <script src="./bundle.js"></script>

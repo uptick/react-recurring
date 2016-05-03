@@ -9,11 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7"
+    "react": "^0.14.8",
+    "react-dom": "^0.14.8",
+    "react-recurring": "0.1.0"
   },
   "devDependencies": {
-    "react-recurring": "0.0.2",
     "webpack": "^1.12.14"
   }
 }
