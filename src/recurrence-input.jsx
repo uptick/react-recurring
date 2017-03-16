@@ -43,8 +43,10 @@ class RecurrenceInput extends Component {
 
     handleSave( event ) {
         event.preventDefault();
-        if( !this.state.compact )
-            this.setState({ savedValue: this.getValue(), compact: true });
+        if( !this.state.compact ) {
+          this.setState({ savedValue: this.getValue(), compact: true });
+          this.sendChange();
+        }
     }
 
     handleCancel( event ) {

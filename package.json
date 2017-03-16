@@ -1,6 +1,6 @@
 {
   "name": "react-recurring",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A recurring date selection widget for React.",
   "repository": {
     "type": "git",
