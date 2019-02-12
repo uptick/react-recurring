@@ -21,6 +21,7 @@
 
 .button {
     cursor: pointer;
+    z-index: 0;
 }
 
 .cancel {

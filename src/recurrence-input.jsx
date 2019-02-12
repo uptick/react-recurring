@@ -180,10 +180,12 @@ class RecurrenceInput extends Component {
                 <div className={ styles.compact }>
                   <div className="input-group">
                     <input type="text" className="form-control" readOnly value={ savedValue } />
-                    <span className={ classNames( 'input-group-addon', styles.button ) }
+                    <div className={ classNames( 'input-group-append', styles.button ) }
                           onClick={ ::this.handleExpand }>
-                      <span className="glyphicon glyphicon-calendar"></span>
-                    </span>
+                      <button className="btn btn-outline-secondary">
+                        <i className="fa fa-calendar"></i>
+                      </button>
+                    </div>
                   </div>
                   { this.renderHidden() }
                 </div>
@@ -225,7 +227,7 @@ class RecurrenceInput extends Component {
               { ruleCom }
               <div className="pull-right">
                 <a className={ styles.cancel } href="#" onClick={ ::this.handleCancel }>Cancel</a>
-                <button type="button" className={ classNames( 'btn btn-default', styles.save ) }
+                <button type="button" className={ classNames( 'btn btn-primary', styles.save ) }
                         onClick={ ::this.handleSave }>
                   Save
                 </button>
