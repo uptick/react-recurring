@@ -1,4 +1,3 @@
-import _ from 'underscore'
 import React, { Component } from 'react'
 import classNames from 'classnames'
 import styles from './offset-input.css'
@@ -72,14 +71,21 @@ class OffsetInput extends Component {
       ];
     }
     else {
+      const days = []
+      let dayIndex = 1
+      while (dayIndex <= 28) {
+        days.push(dayIndex)
+        dayIndex++
+      }
+
       content = [
         <select className={ classNames( 'form-control', styles.count ) } key="3"
                 onChange={ ::this.handleCountChange } value={ count }>
-          { _.range( 1, 29 ).map( ii => (
+          { days.map( ii => (
               <option value={ ii }>{ this.getOrdinal( ii ) }</option>
             ))}
           <option value="-1">last</option>
-          { _.range( 2, 29 ).map( ii => (
+          { days.slice(1).map( ii => (
               <option value={ -ii }>{ this.getOrdinal( ii ) } last</option>
             ))}
         </select>,
